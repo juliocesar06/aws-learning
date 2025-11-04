@@ -31,3 +31,33 @@ EC2 significa **Elastic Compute Cloud**, o serviço de máquinas virtuais na nuv
 - 🔹 Auto Scaling = adiciona/remove instâncias conforme demanda.
 - 🔹 Load Balancer = distribui o tráfego entre instâncias.
 
+## TIPOS DE INSTÂNCIAS
+- Instâncias de uso geral 
+  - Equilibrio recursos de computaçao.
+    - várias workloads 
+    - serviços da web
+    - repositórios de código
+
+- Instâncias otimizadas para computação.
+  -  Ideais para tarefas de computação intensiva.
+     - computação intensiva
+     - servidores de jogos
+     - computação de alto desempenho
+     - machine learning
+     - modelagem científica.
+
+- Instâncias otimizadas para memória
+   - boas para tarefas que consomem muita memória
+     - desempenho rápido para grande processamento de dados.
+- cálculos de números de ponto flutuante
+      
+
+- instâncias de computação acelerada
+  - cálculos de números de ponto flutuante
+  - processamento gráfico
+  - correspondência de padrões de dados
+
+- instâncias otimizadas para armazenamento
+  -  alto desempenho para dados armazenados localmente.
+
+
