@@ -32,35 +32,15 @@ EC2 significa **Elastic Compute Cloud**, o serviço de máquinas virtuais na nuv
 - 🔹 Auto Scaling = adiciona/remove instâncias conforme demanda.
 - 🔹 Load Balancer = distribui o tráfego entre instâncias.
 
-## TIPOS DE INSTÂNCIAS
-- Instâncias de uso geral 
-  - Equilibrio recursos de computaçao.
-    - várias workloads 
-    - serviços da web
-    - repositórios de código
+## 🧠 Tipos de instâncias
 
-- Instâncias otimizadas para computação.
-  -  Ideais para tarefas de computação intensiva.
-     - computação intensiva
-     - servidores de jogos
-     - computação de alto desempenho
-     - machine learning
-     - modelagem científica.
-
-- Instâncias otimizadas para memória
-   - boas para tarefas que consomem muita memória
-     - desempenho rápido para grande processamento de dados.
-- cálculos de números de ponto flutuante
-      
-
-- instâncias de computação acelerada
-  - cálculos de números de ponto flutuante
-  - processamento gráfico
-  - correspondência de padrões de dados
-
-- instâncias otimizadas para armazenamento
-  -  alto desempenho para dados armazenados localmente.
-
+| Tipo | Uso principal | Exemplos |
+|------|----------------|-----------|
+| 💼 **Uso geral** | Equilíbrio entre CPU e memória | Web apps, repositórios |
+| ⚙️ **Otimizada p/ computação** | Tarefas intensivas em CPU | Servidores de jogos, ML |
+| 🧮 **Otimizada p/ memória** | Processamento de dados em RAM | Bancos de dados em memória |
+| 🎨 **Computação acelerada (GPU)** | Gráficos, IA, simulações | ML, renderização 3D |
+| 💾 **Otimizada p/ armazenamento** | Acesso rápido a dados locais | Big data, logs |
 # INSTÂNCIANDO
   ### Console
   
@@ -84,62 +64,63 @@ EC2 significa **Elastic Compute Cloud**, o serviço de máquinas virtuais na nuv
   
   4. Clique em **Launch Instance**
 
+  ![Instânciando](https://github.com/juliocesar06/aws-learning/blob/main/modulos/img/aws_instanciando.gif?raw=True)
 
-
-
+  Obs: uso de 0.0.0.0/0 apenas por exemplo
   
+  ## 🔸 2. Por CLI 
 
   ### Pré-requisito
   *  ter AWS CLI instalado.
   *  aws configure com suas chaves de acesso (Access Key e Secret Key)
 
+- info importante
 
+| Parametro           | Significado|
+| --------------------|---------------------------------------|
+|--image-id           |	ID da AMI (Ubuntu, Amazon Linux, etc.)|
+|--instance-type	    |Tipo da instância
+|--key-name	          |Nome da chave SSH
+|--security-group-ids	|Firewall associado
+|--subnet-id	        |Sub-rede VPC
+|--region	            |Região AWS
+|--tag-specifications	|Nomeia automaticamente a instância
 
+* Comando de Exemplo:
 
+```bash
+aws ec2 run-instances \
+  --image-id ami-0abcd1234efgh5678 \
+  --instance-type t3.micro \
+  --key-name minha-chave \
+  --security-group-ids sg-0123456789abcdef \
+  --subnet-id subnet-0abcdef123456789 \
+  --region us-east-1 \
+  --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=MinhaInstanciaCLI}]'
+  ```
 
+  ## 🔸 3. Pelo SDK (Boto3 - Python)
 
+  ```python
+  import boto3
 
+ec2 = boto3.resource('ec2')
 
+instance = ec2.create_instances(
+    ImageId='ami-0abcd1234efgh5678',
+    InstanceType='t3.micro',
+    KeyName='minha-chave',
+    MinCount=1,
+    MaxCount=1,
+    TagSpecifications=[
+        {
+            'ResourceType': 'instance',
+            'Tags': [{'Key': 'Name', 'Value': 'Instancia-SDK'}]
+        }
+    ]
+)
+print(f"Instância criada: {instance[0].id}")
 
-
-  <table>
-    <tr>
-      <th>Parâmetro </th>
-      <th>Significado </th>
-    </tr>
-    <tr>
-      <th>--image-id</th>
-      <th>ID da AMI (ex: Ubuntu, Amazon Linux, etc.)</th>
-    </tr>
-     <tr>
-      <th>--instance-type</th>
-      <th>Tipo da instância (t2.micro, t3.small, etc.)</th>
-    </tr>
-     <tr>
-      <th>--key-name</th>
-      <th>Nome do par de chaves SSH</th>
-    </tr>
-     <tr>
-      <th>--security-group-ids</th>
-      <th>ID do Security Group</th>
-    </tr>
-     <tr>
-      <th>--subnet-id</th>
-      <th>Sub-rede na VPC</th>
-    </tr>
-     <tr>
-      <th>--region</th>
-      <th>Região AWS</th>
-    </tr>
-     <tr>
-      <th>--tag-specifications</th>
-      <th>Nomeia a instância automaticamente</th>
-    </tr>
-  </table>
-
-<h3>cli</h3>
-  -
-<h3>sdk</h3>
 
 
 
