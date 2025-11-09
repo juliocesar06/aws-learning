@@ -18,6 +18,7 @@ EC2 significa **Elastic Compute Cloud**, o serviço de máquinas virtuais na nuv
 3. configura segurança
 4. armazenamento
 
+
 ## BASICO NECESSARIO PARA SABER 💡
 
 - 🔹 Instância = sua máquina virtual.
@@ -59,5 +60,86 @@ EC2 significa **Elastic Compute Cloud**, o serviço de máquinas virtuais na nuv
 
 - instâncias otimizadas para armazenamento
   -  alto desempenho para dados armazenados localmente.
+
+# INSTÂNCIANDO
+  ### Console
+  
+  * Esse é o método direto via terminal (PowerShell, CMD ou bash)
+
+  
+## 🔸 1. Pelo Console AWS (modo gráfico)
+
+  1. Acesse o painel [AWS Management Console](https://aws.amazon.com/console/)
+  
+  2. Vá em **EC2 → Launch Instance**
+  
+  3. Escolha:
+  
+    - **Nome** da instância
+    - **AMI** (Ubuntu, Amazon Linux, etc.)
+    - **Tipo de instância** (ex: `t3.micro`)
+    - **Key Pair** (crie ou selecione uma existente)
+    - **Security Group**
+    - **Armazenamento**
+  
+  4. Clique em **Launch Instance**
+
+
+
+
+  
+
+  ### Pré-requisito
+  *  ter AWS CLI instalado.
+  *  aws configure com suas chaves de acesso (Access Key e Secret Key)
+
+
+
+
+
+
+
+
+
+
+  <table>
+    <tr>
+      <th>Parâmetro </th>
+      <th>Significado </th>
+    </tr>
+    <tr>
+      <th>--image-id</th>
+      <th>ID da AMI (ex: Ubuntu, Amazon Linux, etc.)</th>
+    </tr>
+     <tr>
+      <th>--instance-type</th>
+      <th>Tipo da instância (t2.micro, t3.small, etc.)</th>
+    </tr>
+     <tr>
+      <th>--key-name</th>
+      <th>Nome do par de chaves SSH</th>
+    </tr>
+     <tr>
+      <th>--security-group-ids</th>
+      <th>ID do Security Group</th>
+    </tr>
+     <tr>
+      <th>--subnet-id</th>
+      <th>Sub-rede na VPC</th>
+    </tr>
+     <tr>
+      <th>--region</th>
+      <th>Região AWS</th>
+    </tr>
+     <tr>
+      <th>--tag-specifications</th>
+      <th>Nomeia a instância automaticamente</th>
+    </tr>
+  </table>
+
+<h3>cli</h3>
+  -
+<h3>sdk</h3>
+
 
 
